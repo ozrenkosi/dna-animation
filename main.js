@@ -1,34 +1,41 @@
 let frequency = 0.03;
 let amplitude = 100;
-let particleSize = 40;
+let particleSizeMAX = 40;
+let particleSize;
 let columns = 12;
 let rows = 2;
-let spacing = 10;
 let fillColor = 255;
 let bgRed = 237;
 let bgGreen = 34;
 let bgBlue = 93;
+let xPos;
+let yPos;
+let offset;
+let margin = 50;
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(700, 400);
 }
 
 function draw() {
-  let xPos = -width/2 + 25;
-  let offset = 0;
-
   background(bgRed, bgGreen, bgBlue);
-  translate(width/2, height/2);
+  translate(0, height/2);
+
+  offset = 0;
 
 	fill(fillColor);
 	noStroke();
 
   for (let i = 0; i < columns; i++) {
+    xPos = map(i, 0, columns-1, margin, width-margin);
+
     for (let j = 0; j < rows; j++) {
-      ellipse(xPos, sinFunc(frequency, offset+TWO_PI*(j+1)/rows, -amplitude, amplitude), cosFunc(frequency, offset+TWO_PI*(j+1)/rows, 0, particleSize));
+      yPos = sinFunc(frequency, offset+TWO_PI*j/rows, -amplitude, amplitude);
+      particleSize = cosFunc(frequency, offset+TWO_PI*j/rows, 0, particleSizeMAX);
+
+      ellipse(xPos, yPos, particleSize);
     }
 
-    xPos = xPos + particleSize + spacing;
     offset = offset + PI/6;
   }
 }
