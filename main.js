@@ -12,9 +12,12 @@ let xPos;
 let yPos;
 let offset;
 let margin = 50;
+let instructions;
 
 function setup() {
   createCanvas(700, 400);
+
+  instructions = createP("Hint: Click the canvas to interact").position(20, 410).style("font-size: 14pt; font-family: sans-serif; color: rgb(237, 34, 93); cursor: default; font-weight: bold");
 }
 
 function draw() {
@@ -49,6 +52,8 @@ function cosFunc(freq, off, min, max) {
 }
 
 function mousePressed() {
+  instructions.hide();
+
   fillColor = map(floor(random(2)), 0, 1, 0, 255);
 
   bgRed = floor(random(256));
