@@ -26,12 +26,12 @@ function draw() {
 	fill(fillColor);
 	noStroke();
 
-  for (let i = 0; i < columns; i++) {
-    xPos = map(i, 0, columns-1, margin, width-margin);
+  for (let col = 0; col < columns; col++) {
+    xPos = map(col, 0, columns-1, margin, width-margin);
 
-    for (let j = 0; j < rows; j++) {
-      yPos = sinFunc(frequency, offset+TWO_PI*j/rows, -amplitude, amplitude);
-      particleSize = cosFunc(frequency, offset+TWO_PI*j/rows, 0, particleSizeMAX);
+    for (let row = 0; row < rows; row++) {
+      yPos = sinFunc(frequency, offset+TWO_PI*row/rows, -amplitude, amplitude);
+      particleSize = cosFunc(frequency, offset+TWO_PI*row/rows, 0, particleSizeMAX);
 
       ellipse(xPos, yPos, particleSize);
     }
