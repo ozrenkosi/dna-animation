@@ -25,7 +25,7 @@ function draw() {
 
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
-      ellipse(xPos, sinFunc(frequency, offset+TWO_PI*(j+1)/rows, amplitude), cosFunc(frequency, offset+TWO_PI*(j+1)/rows, particleSize));
+      ellipse(xPos, sinFunc(frequency, offset+TWO_PI*(j+1)/rows, -amplitude, amplitude), cosFunc(frequency, offset+TWO_PI*(j+1)/rows, 0, particleSize));
     }
 
     xPos = xPos + particleSize + spacing;
@@ -33,12 +33,12 @@ function draw() {
   }
 }
 
-function sinFunc(freq, off, amp) {
-	return map(sin(frameCount*freq + off), -1, 1, -amp, amp);
+function sinFunc(freq, off, min, max) {
+	return map(sin(frameCount*freq + off), -1, 1, min, max);
 }
 
-function cosFunc(freq, off, amp) {
-	return map(cos(frameCount*freq + off), -1, 1, 0, amp);
+function cosFunc(freq, off, min, max) {
+	return map(cos(frameCount*freq + off), -1, 1, min, max);
 }
 
 function mousePressed() {
