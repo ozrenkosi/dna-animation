@@ -14,7 +14,7 @@ function setup() {
 }
 
 function draw() {
-  let xPos = -width/2+25;
+  let xPos = -width/2 + 25;
   let offset = 0;
 
   background(bgRed, bgGreen, bgBlue);
